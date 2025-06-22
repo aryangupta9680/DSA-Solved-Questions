@@ -1,0 +1,4 @@
+Original data
+45 33 27 91 87 
+Sorted data
+27 33 45 87 91 
