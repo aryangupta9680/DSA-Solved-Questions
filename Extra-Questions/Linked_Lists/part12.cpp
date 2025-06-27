@@ -34,7 +34,7 @@ Node *CreateDLL(int arr[], int index, int size, Node *back)
 
 int main()
 {
-    Node *head = NULL, *tail = NULL;
+    Node *head = NULL;
 
     // Create doubly linked list using recursion
     int arr[] = {1, 2, 3, 4, 5};
