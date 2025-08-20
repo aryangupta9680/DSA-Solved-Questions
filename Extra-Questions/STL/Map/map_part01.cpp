@@ -12,7 +12,6 @@ int main()
     // key should be unique
     // it uses red black tree or AVL tree for implementation
     // Insertion, deletion and searching have O(log n) time complexity
-    // data hai wo sorted form mein rahega
 
     // map create
     // map<key_type, value_type> map_name;

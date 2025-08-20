@@ -8,7 +8,6 @@ using namespace std;
 
 int main()
 {
-    // data hai wo sorted form mein rahega
     // key ab unique nahi ho to chalega
     // duplicate values and duplicate keys are allowed
     // isme subscript wala use nahi ker sakte m[100] wala
