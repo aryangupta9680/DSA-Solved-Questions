@@ -50,3 +50,63 @@ public:
         return ans;
     }
 };
+
+
+
+
+
+// Method 2: using Kahn's Algorithm
+class Solution
+{
+public:
+    vector<int> topoSort(int V, vector<vector<int>> &edges)
+    {
+        vector<vector<int>> adj(V);
+        for (int i = 0; i < edges.size(); i++)
+        {
+            int u = edges[i][0];
+            int v = edges[i][1];
+            adj[u].push_back(v);
+        }
+
+        vector<int> ans;
+        vector<int> InDegree(V, 0); // store the indegree of every node
+
+        for (int i = 0; i < V; i++)
+        {
+            for (int j = 0; j < adj[i].size(); j++)
+            {
+                InDegree[adj[i][j]]++;
+            }
+        }
+
+        // push all the node of zero indegree into queue
+        queue<int> q;
+        for (int i = 0; i < V; i++)
+        {
+            if (!InDegree[i])
+            {
+                q.push(i);
+            }
+        }
+
+        while (!q.empty())
+        {
+            int node = q.front();
+            q.pop();
+            ans.push_back(node);
+
+            // neighbour ki indegree ko decrease karna hai 1 se
+            for (int j = 0; j < adj[node].size(); j++)
+            {
+                InDegree[adj[node][j]]--;
+                if (InDegree[adj[node][j]] == 0)
+                {
+                    q.push(adj[node][j]);
+                }
+            }
+        }
+
+        return ans;
+    }
+};
