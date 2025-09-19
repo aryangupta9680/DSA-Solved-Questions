@@ -49,3 +49,63 @@ public:
         return 0;
     }
 };
+
+
+
+
+
+// Method 2: Using BFS (Kahn's Algorithm)
+class Solution
+{
+public:
+    bool isCyclic(int V, vector<vector<int>> &edges)
+    {
+        vector<vector<int>> adj(V);
+        for (int i = 0; i < edges.size(); i++)
+        {
+            int u = edges[i][0];
+            int v = edges[i][1];
+            adj[u].push_back(v);
+        }
+
+        vector<int> InDegree(V, 0);
+
+        for (int i = 0; i < V; i++)
+        {
+            for (int j = 0; j < adj[i].size(); j++)
+            {
+                InDegree[adj[i][j]]++;
+            }
+        }
+
+        queue<int> q;
+
+        for (int i = 0; i < V; i++)
+        {
+            if (!InDegree[i])
+            {
+                q.push(i);
+            }
+        }
+
+        int count = 0;
+
+        while (!q.empty())
+        {
+            int node = q.front();
+            q.pop();
+            count++;
+
+            for (int j = 0; j < adj[node].size(); j++)
+            {
+                InDegree[adj[node][j]]--;
+                if (!InDegree[adj[node][j]])
+                {
+                    q.push(adj[node][j]);
+                }
+            }
+        }
+
+        return count != V;
+    }
+};
