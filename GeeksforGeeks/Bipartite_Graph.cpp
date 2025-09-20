@@ -111,7 +111,7 @@ public:
             if (color[i] == -1) // not assigned
             {
                 color[i] = 0;
-                if (!checkBip(0, adj, color))
+                if (!checkBip(i, adj, color))
                 {
                     return false;
                 }
